@@ -1,4 +1,4 @@
-#pragma once
+# pragma once
 #include "oop.h"
 #include "clsMangeUser.h"
 #include "clsLoginRegister.h"
@@ -66,6 +66,11 @@ public:
         cout << "\nAre you sure you want to delete this client y/n? ";
         char Answer = 'n';
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             if (Client1.Delete())
@@ -208,6 +213,11 @@ public:
         cout << "\nAre you sure you want to update this client y/n? ";
         char Answer = 'n';
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             cout << "\n\nUpdate Client Info:";
@@ -217,18 +227,28 @@ public:
             SaveResult = Client1.Save();
             switch (SaveResult)
             {
-            case  clsBankClient::enSaveResults::svSucceeded:
-            {
-                cout << "\nAccount Updated Successfully :-)\n";
-
-                _PrintClient(Client1);
-                break;
-            }
-            case clsBankClient::enSaveResults::svFaildEmptyObject:
-            {
-                cout << "\nError account was not saved because it's Empty";
-                break;
-            }
+                case clsBankClient::enSaveResults::svSucceeded:
+                {
+                    cout << "\nAccount Updated Successfully :-)\n";
+                    _PrintClient(Client1);
+                    break;
+                }
+                case clsBankClient::enSaveResults::svFaildEmptyObject:
+                {
+                    cout << "\nError account was not saved because it's Empty";
+                    break;
+                }
+                case clsBankClient::enSaveResults::svFaildAccountNumberExists:
+                {
+                    cout << "\nError account was not saved because the account number already exists";
+                    break;
+                }
+                default:
+                {
+                    // Handle unexpected values
+                    cout << "\nError: Unexpected save result";
+                    break;
+                }
             }
         }
     }
@@ -347,7 +367,11 @@ class clsMainScreen:protected clsScreen
             cout << setw(37) << left << ""<<"\n\tPress any key to go back to Main Menue...";
 
             std::cin.get(); // Consume the newline character
+            if (cin.fail())
+                exit(1);
             std::cin.get(); // Pause the program
+            if (cin.fail())
+                exit(1);
             ShowMainMenue();
         }
 		static void _ShowAllClientsScreen()

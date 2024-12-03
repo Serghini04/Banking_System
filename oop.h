@@ -1,7 +1,6 @@
 #pragma once
 #ifndef OOP_H
 #define OOP_H
-using namespace std;
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -33,14 +32,21 @@ private :
 
             cout << "Enter Username? ";
             cin >> Username;
-
+            if (cin.fail())
+            {
+                cout << "Input Error\n";
+                exit (1);
+            }
             cout << "Enter Password? ";
             cin >> Password;
-
+            if (cin.fail())
+            {
+                cout << "Input Error\n";
+                exit (1);
+            }
             CurrentUser = clsUser::Find(Username, Password);
 
             LoginFaild = CurrentUser.IsEmpty();
-
         } while (LoginFaild);
         clsLoginRegister::AddUserToLoginRegister(CurrentUser);
         clsMainScreen::ShowMainMenue();

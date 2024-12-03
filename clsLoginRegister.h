@@ -48,7 +48,7 @@ class	clsLoginRegister : public clsScreens
 			string	line;
 			fstream	fd;
 
-			fd.open("LoginRegister.txt", ios::in);
+			fd.open("database/LoginRegister.txt", ios::in);
 			if (fd.is_open())
 			{
 				while (getline(fd, line))
@@ -64,7 +64,7 @@ class	clsLoginRegister : public clsScreens
 		{
 			fstream	fd;
 
-			fd.open("LoginRegister.txt", ios::out);
+			fd.open("database/LoginRegister.txt", ios::out);
 			if (fd.is_open())
 			{
 				for (auto it = res.begin() ; it != res.end() ; it++)

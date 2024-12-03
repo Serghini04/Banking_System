@@ -1,3 +1,4 @@
+#pragma once
 #include "oop.h"
 #include "global.h"
 #include "clsTransferScreen.h"
@@ -96,7 +97,12 @@ private:
         string AccountNumber = "";
         cout << "\nPlease enter AccountNumber? ";
         cin >> AccountNumber;
-        return AccountNumber;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
+                return AccountNumber;
     }
 
 public:
@@ -125,7 +131,11 @@ public:
         cout << "\nAre you sure you want to perform this transaction? ";
         char Answer = 'n';
         cin >> Answer;
-
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'Y' || Answer == 'y')
         {
            if( Client1.Withdraw(Amount))
@@ -171,7 +181,12 @@ private:
         string AccountNumber = "";
         cout << "\nPlease enter AccountNumber? ";
         cin >> AccountNumber;
-        return AccountNumber;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
+                return AccountNumber;
     }
 
 
@@ -200,7 +215,11 @@ public:
         cout << "\nAre you sure you want to perform this transaction? ";
         char Answer = 'n';
         cin >> Answer;
-
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'Y' || Answer == 'y')
         {
             Client1.Deposit(Amount);
@@ -260,7 +279,7 @@ private:
     {
         cout << "\n\nPress any key to go back to Transactions Menue...";
         cin.get();
-        cin.get();
+                cin.get();
         ShowTransactionsMenue();
 
     }
@@ -305,6 +324,8 @@ private:
             _GoBackToTransactionsMenue();
             break;
         }
+        default :
+            break;
         }
     }
 public:

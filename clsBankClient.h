@@ -41,7 +41,7 @@ private:
 	{
 		vector	<clsBankClient> vClients;
 		fstream fd;
-		fd.open("clients.txt", ios::in);
+		fd.open("database/clients.txt", ios::in);
 		if (fd.is_open())
 		{
 			string  line;
@@ -57,7 +57,7 @@ private:
 	static void _SaveClientDataToFile(vector <clsBankClient> _Clients)
 	{
 		fstream fd;
-		fd.open("clients.txt", ios::out);
+		fd.open("database/clients.txt", ios::out);
 		string line;
 		if (fd.is_open())
 		{
@@ -119,7 +119,7 @@ private:
         string stDataLine = _PrepareTransferLogRecord( Amount,  DestinationClient,  UserName);
 
         fstream MyFile;
-        MyFile.open("TransfersLog.txt", ios::out | ios::app);
+        MyFile.open("database/TransfersLog.txt", ios::out | ios::app);
 
         if (MyFile.is_open())
         {
@@ -217,7 +217,7 @@ public:
 	{
 		vector	<clsBankClient> vClients;
 		fstream fd;
-		fd.open("clients.txt", ios::in);
+		fd.open("database/clients.txt", ios::in);
 		if (fd.is_open())
 		{
 			string  line;
@@ -238,7 +238,7 @@ public:
 	{
 		vector	<clsBankClient> vClients;
 		fstream fd;
-		fd.open("clients.txt", ios::in);
+		fd.open("database/clients.txt", ios::in);
 		if (fd.is_open())
 		{
 			string  line;
@@ -358,7 +358,7 @@ public:
     {
         vector <stTrnsferLogRecord> vTransferLogRecord;
         fstream MyFile;
-        MyFile.open("TransfersLog.txt", ios::in);//read Mode
+        MyFile.open("database/TransfersLog.txt", ios::in);//read Mode
         if (MyFile.is_open())
         {
             string Line;

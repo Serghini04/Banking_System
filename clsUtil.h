@@ -1,3 +1,4 @@
+#pragma once
 #include "oop.h"
 using namespace std;
 
@@ -25,57 +26,33 @@ public:
 
     static char GetRandomCharacter(enCharType CharType)
     {
-
-        //updated this method to accept mixchars
+        // Updated this method to accept MixChars
         if (CharType == MixChars)
         {
-            //Capital/Samll/Digits only
+            // Capital/Small/Digits only
             CharType = (enCharType)RandomNumber(1, 3);
-
         }
-
         switch (CharType)
         {
-
-        case enCharType::SmallLetter:
-        {
-            return char(RandomNumber(97, 122));
-            break;
-        }
-        case enCharType::CapitalLetter:
-        {
-            return char(RandomNumber(65, 90));
-            break;
-        }
-        case enCharType::SpecialCharacter:
-        {
-            return char(RandomNumber(33, 47));
-            break;
-        }
-        case enCharType::Digit:
-        {
-            return char(RandomNumber(48, 57));
-            break;
-        }
-    defualt:
-        {
-            return char(RandomNumber(65, 90));
-            break;
-        }
+            case enCharType::SmallLetter:
+                return char(RandomNumber(97, 122));
+            case enCharType::CapitalLetter:
+                return char(RandomNumber(65, 90));
+            case enCharType::SpecialCharacter:
+                return char(RandomNumber(33, 47));
+            case enCharType::Digit:
+                return char(RandomNumber(48, 57));
+            default:
+                return char(RandomNumber(65, 90));
         }
     }
 
     static  string GenerateWord(enCharType CharType, short Length)
-
     {
         string Word;
-
         for (int i = 1; i <= Length; i++)
-
         {
-
             Word = Word + GetRandomCharacter(CharType);
-
         }
         return Word;
     }

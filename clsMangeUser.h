@@ -1,3 +1,4 @@
+#pragma once
 #include "oop.h"
 #include "clsUser.h"
 #include <iomanip>
@@ -86,6 +87,11 @@ private:
 
         cout << "\nDo you want to give full access? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             return -1;
@@ -95,6 +101,11 @@ private:
 
         cout << "\nShow Client List? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pListClients;
@@ -102,6 +113,11 @@ private:
 
         cout << "\nAdd New Client? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pAddNewClient;
@@ -109,6 +125,11 @@ private:
 
         cout << "\nDelete Client? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pDeleteClient;
@@ -116,6 +137,11 @@ private:
 
         cout << "\nUpdate Client? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pUpdateClients;
@@ -123,6 +149,11 @@ private:
 
         cout << "\nFind Client? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pFindClient;
@@ -130,6 +161,11 @@ private:
 
         cout << "\nTransactions? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pTranactions;
@@ -137,12 +173,22 @@ private:
 
         cout << "\nManage Users? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pManageUsers;
         }
         cout << "\nLogin Register? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pLoginRegister;
@@ -178,10 +224,14 @@ public:
 
         char Answer = 'n';
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
 
         if (Answer == 'y' || Answer == 'Y')
         {
-
             cout << "\n\nUpdate User Info:";
             cout << "\n____________________\n";
             _ReadUserInfo(User1);
@@ -191,19 +241,28 @@ public:
 
             switch (SaveResult)
             {
-            case  clsUser::enSaveResults::svSucceeded:
-            {
-                cout << "\nUser Updated Successfully :-)\n";
-
-                _PrintUser(User1);
-                break;
-            }
-            case clsUser::enSaveResults::svFaildEmptyObject:
-            {
-                cout << "\nError User was not saved because it's Empty";
-                break;
-
-            }
+                case clsUser::enSaveResults::svSucceeded:
+                {
+                    cout << "\nUser Updated Successfully :-)\n";
+                    _PrintUser(User1);
+                    break;
+                }
+                case clsUser::enSaveResults::svFaildEmptyObject:
+                {
+                    cout << "\nError User was not saved because it's Empty";
+                    break;
+                }
+                case clsUser::enSaveResults::svFaildUserExists:
+                {
+                    cout << "\nError User was not saved because User already exists";
+                    break;
+                }
+                default:
+                {
+                    // Handle unexpected values
+                    cout << "\nError: Unexpected save result";
+                    break;
+                }
             }
         }
     }
@@ -249,6 +308,11 @@ public:
 
         string Answer = "n";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
 
         if (Answer == "y" || Answer == "Y")
         {
@@ -309,6 +373,11 @@ private:
 
         cout << "\nDo you want to give full access? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             return -1;
@@ -318,6 +387,11 @@ private:
 
         cout << "\nShow Client List? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
 
@@ -327,6 +401,11 @@ private:
 
         cout << "\nAdd New Client? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pAddNewClient;
@@ -334,6 +413,11 @@ private:
 
         cout << "\nDelete Client? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pDeleteClient;
@@ -341,6 +425,11 @@ private:
 
         cout << "\nUpdate Client? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pUpdateClients;
@@ -348,6 +437,11 @@ private:
 
         cout << "\nFind Client? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pFindClient;
@@ -355,6 +449,11 @@ private:
 
         cout << "\nTransactions? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pTranactions;
@@ -362,6 +461,11 @@ private:
 
         cout << "\nManage Users? y/n? ";
         cin >> Answer;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
         if (Answer == 'y' || Answer == 'Y')
 
             Permissions += clsUser::enPermissions::pManageUsers;
@@ -504,47 +608,58 @@ private:
     }
     static void _PerformManageUsersMenueOption(enManageUsersMenueOptions ManageUsersMenueOption)
     {
-
         switch (ManageUsersMenueOption)
         {
-        case enManageUsersMenueOptions::eListUsers:
-        {
-            system("clear");
-            _ShowListUsersScreen();
-            _GoBackToManageUsersMenue();
-            break;
+            case enManageUsersMenueOptions::eListUsers:
+            {
+                system("clear");
+                _ShowListUsersScreen();
+                _GoBackToManageUsersMenue();
+                break;
+            }
+            case enManageUsersMenueOptions::eAddNewUser:
+            {
+                system("clear");
+                _ShowAddNewUserScreen();
+                _GoBackToManageUsersMenue();
+                break;
+            }
+            case enManageUsersMenueOptions::eDeleteUser:
+            {
+                system("clear");
+                _ShowDeleteUserScreen();
+                _GoBackToManageUsersMenue();
+                break;
+            }
+            case enManageUsersMenueOptions::eUpdateUser:
+            {
+                system("clear");
+                _ShowUpdateUserScreen();
+                _GoBackToManageUsersMenue();
+                break;
+            }
+            case enManageUsersMenueOptions::eFindUser:
+            {
+                system("clear");
+                _ShowFindUserScreen();
+                _GoBackToManageUsersMenue();
+                break;
+            }
+            case enManageUsersMenueOptions::eMainMenue:
+            {
+                system("clear");
+                _ShowFindUserScreen();
+                _GoBackToManageUsersMenue();
+                break;
+            }
+            default:
+            {
+                // Handle unexpected values
+                cout << "\nError: Unexpected menu option";
+                break;
+            }
         }
-        case enManageUsersMenueOptions::eAddNewUser:
-        {
-            system("clear");
-            _ShowAddNewUserScreen();
-            _GoBackToManageUsersMenue();
-            break;
-        }
-        case enManageUsersMenueOptions::eDeleteUser:
-        {
-            system("clear");
-            _ShowDeleteUserScreen();
-            _GoBackToManageUsersMenue();
-            break;
-        }
-        case enManageUsersMenueOptions::eUpdateUser:
-        {
-            system("clear");
-            _ShowUpdateUserScreen();
-            _GoBackToManageUsersMenue();
-            break;
-        }
-        case enManageUsersMenueOptions::eFindUser:
-        {
-            system("clear");
-
-             _ShowFindUserScreen();
-            _GoBackToManageUsersMenue();
-            break;
-        }
-        }
-    }
+}
 public:
     static void ShowManageUsersMenue()
     {

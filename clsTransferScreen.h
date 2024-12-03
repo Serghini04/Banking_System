@@ -1,4 +1,3 @@
-
 #pragma once
 #include "oop.h"
 
@@ -23,6 +22,11 @@ class	clsTransferScreen
         {
             cout << msg;
             cin >> id;
+		    if (cin.fail())
+        	{
+            	cout << "Input Error\n";
+           		exit (1);
+        	}
             data = clsBankClient::Find(id);
             if (data.Mode() != clsBankClient::enMode::EmptyMode)
                 return (data);
@@ -44,6 +48,11 @@ class	clsTransferScreen
 		{
 			cout << "Enter Transfer Amount ? ";
 			cin >> Amount;
+			if (cin.fail())
+			{
+				cout << "Input Error\n";
+				exit (1);
+			}
 			if (Amount <= data.Balance())
 				return (Amount);
 			cout << "Amount Exceeds the available Balance, Enter another Amount ?\n";
@@ -64,6 +73,11 @@ class	clsTransferScreen
 		Amount = _ReadAmountTransfer(dataFrom);
 		cout << "Are you sure you want to perform this peration? (y/n)";
 		cin >> input;
+        if (cin.fail())
+        {
+            cout << "Input Error\n";
+            exit (1);
+        }
 		if (input == "y" || input == "Y")
 		{
 			// dataFrom.SetBalance(dataFrom.Balance() - Amount);

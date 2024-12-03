@@ -1,3 +1,4 @@
+#pragma once
 #include "oop.h"
 using namespace std;
 
