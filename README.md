@@ -86,7 +86,7 @@ Date : 3/12/2024
 ===========================================
 ```
 
-### Usage
+## 🗝 Usage
 
 1. **Compile and run the program:**
     ```bash
@@ -119,7 +119,7 @@ Our permission system isn't just a feature - it's a sophisticated ecosystem:
 
 
 
-## Security Features
+## 🚧 Security Features
 - Password encryption
 - User permission levels
 - Secure file-based data storage
