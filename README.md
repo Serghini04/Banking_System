@@ -88,15 +88,15 @@ Date : 3/12/2024
 
 ## 🗝 Usage
 
-1. **Compile and run the program:**
+- **Compile and run the program:**
     ```bash
     c++ -std=c++11 main.cpp -o my_program
     ./my_program
     ```
 
-2. **Log in using credentials from `database/realpassword.txt`.**
+- **Log in using credentials from `database/realpassword.txt`.**
 
-3. **Navigate through the menu using numeric inputs.**
+- **Navigate through the menu using numeric inputs.**
 
 ## 🔮 The Permissions Prophecy
 
